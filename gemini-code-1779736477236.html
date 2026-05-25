@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sophia von Waldenburg - Elite book marketing and luxury author branding agency.">
+    <title>Sophia von Waldenburg | Luxury Book Marketing Agency</title>
+    <!-- Google Fonts: Cormorant Garamond for luxury serif headlines, Inter for clean modern UI body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-charcoal: #141414;
+            --bg-glass: rgba(20, 20, 20, 0.7);
+            --text-cream: #f4f1ea;
+            --text-muted: #a3a3a3;
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --burgundy: #58111a;
+            --burgundy-glow: rgba(88, 17, 26, 0.4);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-deep);
+            color: var(--text-cream);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+
+        h1, h2, h3, .serif-text {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- GLOBAL CINEMATIC LIGHTING EFFECTS --- */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--burgundy-glow) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            animation: floatGlow 12s ease-in-out infinite alternate;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            top: 40%;
+            left: -20%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(20, 30, 45, 0.3) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-5%, 5%) scale(1.1); }
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(244, 241, 234, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-cream);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero-headline {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-headline span {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subheadline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary {
+            background: var(--text-cream);
+            color: var(--bg-deep);
+            border: 1px solid var(--text-cream);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text-cream);
+            box-shadow: 0 0 25px rgba(244, 241, 234, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-cream);
+            border: 1px solid rgba(244, 241, 234, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* --- VISUAL DECORATIONS / PARTICLES --- */
+        .hero-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-book-mock {
+            position: absolute;
+            width: 180px;
+            height: 260px;
+            background: linear-gradient(135deg, #1e1114 0%, #0d0608 100%);
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset -1px 0 0 rgba(255,255,255,0.1);
+            border-radius: 2px 8px 8px 2px;
+            opacity: 0.25;
+        }
+
+        .book-1 {
+            top: 20%;
+            left: 10%;
+            transform: rotate(-12deg);
+            animation: floatObject 8s ease-in-out infinite alternate;
+        }
+
+        .book-2 {
+            bottom: 15%;
+            right: 8%;
+            transform: rotate(15deg);
+            animation: floatObject 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatObject {
+            0% { transform: translateY(0) rotate(-12deg); }
+            100% { transform: translateY(-20px) rotate(-8deg); }
+        }
+
+        /* --- SECTION GENERIC LAYOUT --- */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+            max-width: 700px;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-text p strong {
+            color: var(--text-cream);
+            font-weight: 400;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(145deg, var(--bg-charcoal), #0c0c0c);
+            border: 1px solid rgba(244, 241, 234, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border: 1px dashed rgba(214, 175, 55, 0.2);
+            pointer-events: none;
+        }
+
+        .about-statement {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            text-align: center;
+            padding: 0 3rem;
+            color: var(--text-cream);
+            font-style: italic;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(180deg, rgba(20,20,20,0.6) 0%, rgba(10,10,10,0.9) 100%);
+            border: 1px solid rgba(244, 241, 234, 0.03);
+            padding: 3rem 2.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(214, 175, 55, 0.08), transparent 60%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(214, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(214, 175, 55, 0.02);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* --- TRUST & CREDIBILITY SECTION --- */
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            background: var(--bg-charcoal);
+            padding: 4rem 2rem;
+            border: 1px solid rgba(244, 241, 234, 0.03);
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .metric-item .number {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-item blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+        }
+
+        /* --- PORTFOLIO & RESULTS SECTION --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            background: var(--bg-charcoal);
+            border: 1px solid rgba(244, 241, 234, 0.03);
+            overflow: hidden;
+            height: 450px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .portfolio-bg-mock {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(10,10,10,0.95) 20%, rgba(10,10,10,0.4) 100%), 
+                        linear-gradient(135deg, #2c1619 0%, #0f0a0b 100%);
+            transition: var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .portfolio-item:hover .portfolio-bg-mock {
+            transform: scale(1.03);
+        }
+
+        .portfolio-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem;
+            width: 100%;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(244, 241, 234, 0.1);
+        }
+
+        .stat-box span {
+            display: block;
+        }
+
+        .stat-box .stat-val {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .stat-box .stat-lbl {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 5rem;
+            background: linear-gradient(135deg, rgba(20,20,20,0.5) 0%, rgba(15,15,15,0.8) 100%);
+            border: 1px solid rgba(244, 241, 234, 0.04);
+            padding: 4rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .info-details li {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-details span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* --- FORM STYLING WITH GLOW EFFECTS --- */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(244, 241, 234, 0.1);
+            padding: 1rem;
+            color: var(--text-cream);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(214, 175, 55, 0.1);
+            background: rgba(15, 15, 15, 0.8);
+        }
+
+        .contact-form .btn {
+            grid-column: span 2;
+            justify-self: start;
+            margin-top: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(244, 241, 234, 0.05);
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- RESPONSIVE ADAPTATIONS --- */
+        @media (max-width: 1024px) {
+            .about-grid, .portfolio-grid, .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width, .contact-form .btn {
+                grid-column: span 1;
+            }
+            .trust-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplification for code structural integrity */
+            }
+            .trust-metrics {
+                grid-template-columns: 1fr;
+            }
+            section {
+                padding: 5rem 1.5rem;
+            }
+            .contact-wrapper {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Cinematic Lighting Backdrops -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">SOPHIA<span>VON</span>WALDENBURG</a>
+            <nav class="nav-links">
+                <a href="#about">The Agency</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Results</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="#contact" class="nav-cta">Consultation</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-decorations">
+            <div class="floating-book-mock book-1"></div>
+            <div class="floating-book-mock book-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-headline">Your Story Deserves The World’s <span>Attention</span>.</h1>
+            <p class="hero-subheadline">We help exceptional authors transform masterpieces into unforgettable global brands through elite marketing architecture, design, and literary strategy.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Book A Consultation</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="section-tag">Philosophy</span>
+                <h2 class="section-title" style="margin-bottom: 2rem;">We don't just market books.<br>We craft literary legacies.</h2>
+                <p>Great books fail not from a lack of depth, but from a lack of visibility. At Sophia von Waldenburg, we look at your manuscript through two distinct lenses: <strong>artistic reverence</strong> and <strong>data-driven scale</strong>.</p>
+                <p>We work exclusively with elite storytellers, major publishers, and high-impact non-fiction authors who demand a marketing rollout that matches the standard of their writing.</p>
+            </div>
+            <div class="about-visual">
+                <div class="about-statement">“The architecture behind the world’s most enduring narratives.”</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <div class="section-header">
+            <span class="section-tag">Capabilities</span>
+            <h2 class="section-title">Comprehensive ecosystems for literary deployment.</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Author Branding</h3>
+                <p>Positioning your personal profile as a recognizable premium asset within the cultural landscape.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Book Promotion</h3>
+                <p>Tailored campaign phases designed to build mainstream literary momentum pre- and post-launch.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Amazon Marketing &amp; SEO</h3>
+                <p>Algorithmic optimization to rank inside competitive clean keywords while maximizing visibility metrics.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Review Campaigns</h3>
+                <p>Securing high-tier editorial coverage and curated early reader feedback from verified arbiters.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Cinematic Book Trailers</h3>
+                <p>High-end video productions engineered specifically to break through social media algorithms visually.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✦</span>
+                <h3>Reader Growth Systems</h3>
+                <p>Constructing high-retention direct funnels using targeted newsletters and elite list-building architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST & CREDIBILITY SECTION -->
+    <section id="credibility">
+        <div class="trust-metrics">
+            <div class="metric-item">
+                <span class="number">42</span>
+                <span class="label">NYT Bestsellers</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">8.4M</span>
+                <span class="label">Books Sold Globally</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">14+</span>
+                <span class="label">Languages Translated</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">100%</span>
+                <span class="label">Artistic Integrity</span>
+            </div>
+        </div>
+
+        <div class="testimonial-slider">
+            <div class="testimonial-item">
+                <blockquote>“Partnering with this team fundamentally changed the scale of my career. They treated my historical fiction series with the visual prestige typically reserved for luxury fashion houses.”</blockquote>
+                <div class="testimonial-author">— Evelyn Vance, Multi-Award Winning Author</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO & RESULTS SECTION -->
+    <section id="portfolio">
+        <div class="section-header">
+            <span class="section-tag">Case Studies</span>
+            <h2 class="section-title">Proof through clean performance metrics.</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-bg-mock"></div>
+                <div class="portfolio-content">
+                    <span class="section-tag" style="color: var(--text-cream);">Fiction Launch</span>
+                    <h3 style="font-size: 1.8rem; margin-top: 0.5rem;">The Echoes of Obsidian</h3>
+                    <div class="portfolio-stats">
+                        <div class="stat-box"><span class="stat-val">+340%</span><span class="stat-lbl">Pre-orders</span></div>
+                        <div class="stat-box"><span class="stat-val">Top 10</span><span class="stat-lbl">Amazon Rank</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-bg-mock" style="background: linear-gradient(0deg, rgba(10,10,10,0.95) 20%, rgba(10,10,10,0.4) 100%), linear-gradient(135deg, #112330 0%, #050a0f 100%);"></div>
+                <div class="portfolio-content">
+                    <span class="section-tag" style="color: var(--text-cream);">Non-Fiction Campaign</span>
+                    <h3 style="font-size: 1.8rem; margin-top: 0.5rem;">Architectural Mindsets</h3>
+                    <div class="portfolio-stats">
+                        <div class="stat-box"><span class="stat-val">120K</span><span class="stat-lbl">Copies Month 1</span></div>
+                        <div class="stat-box"><span class="stat-val">#1</span><span class="stat-lbl">WSJ Bestseller</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" style="margin-bottom: 4rem;">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <span class="section-tag">Initiation</span>
+                <h3>Let’s begin the next chapter.</h3>
+                <p>We accept a limited roster of new campaigns quarterly to ensure absolute dedicated creative execution.</p>
+                <ul class="info-details">
+                    <li><span>Direct Inquiries</span>ateliers@sophiavonwaldenburg.com</li>
+                    <li><span>Location Matrix</span>Zurich / New York / Remote</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Vimeo</a>
+                </div>
+            </div>
+            <div>
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Alexander Cross">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="alexander@manuscript.com">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="title">Book Title &amp; Genre</label>
+                        <input type="text" id="title" placeholder="The Silent Horizon (Literary Fiction)">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="msg">Campaign Vision</label>
+                        <textarea id="msg" rows="5" placeholder="Tell us briefly about the story and your target timeline..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Invitation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 SOPHIA VON WALDENBURG. All Rights Reserved. Private Literary Agency Architecture.</p>
+    </footer>
+
+</body>
+</html>
